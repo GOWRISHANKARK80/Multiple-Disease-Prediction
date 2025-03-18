@@ -6,9 +6,8 @@ import pandas as pd
 import base64
 import os
 
-def set_background_image_local():
-    image_path = "medical_image.jpg"
-    
+def set_background_image_local(image_path):
+     
     if not os.path.exists(image_path):
         st.error("Background image not found. Please check the file path.")
         return
@@ -33,7 +32,7 @@ def set_background_image_local():
     ) 
 
 # Call the function
-set_background_image_local()
+set_background_image_local(r"medical_image.jpg")
 # Streamlit UI
 st.title("Disease Prediction")
 
