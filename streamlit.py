@@ -27,7 +27,7 @@ def set_background_image_local(image_path):
     ) 
 
 # Call the function
-set_background_image_local(r"medical_image.jpg")
+
 # Streamlit UI
 st.title("Disease Prediction")
 
@@ -36,7 +36,7 @@ nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kid
 
 if nav == "Parkinson's Disease":
     st.header("Parkinson's Disease Prediction")
-    
+    set_background_image_local(r"medical_image.jpg")
     # Load the Parkinson's model
     try:
         parkinson_model = pickle.load(open(r'XGBparkinson.pkl', 'rb'))
