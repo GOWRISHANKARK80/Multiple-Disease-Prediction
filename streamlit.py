@@ -7,11 +7,6 @@ import base64
 import os
 
 def set_background_image_local(image_path):
-     
-    if not os.path.exists(image_path):
-        st.error("Background image not found. Please check the file path.")
-        return
-    
     with open(image_path, "rb") as file:
         data = file.read()
     base64_image = base64.b64encode(data).decode("utf-8")
