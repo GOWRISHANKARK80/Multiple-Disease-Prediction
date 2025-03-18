@@ -34,7 +34,7 @@ nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kid
 
 if nav == "Parkinson's Disease":
     st.header("Parkinson's Disease Prediction")
-    
+    set_background_image_local(r"2.jpg")
     # Load the Parkinson's model
     try:
         parkinson_model = pickle.load(open(r'XGBparkinson.pkl', 'rb'))
@@ -84,6 +84,7 @@ if nav == "Parkinson's Disease":
             st.error(f"An error occurred during prediction: {e}")
 
 elif nav == "Kidney Disease":
+    set_background_image_local(r"3.jpg")
     st.header("Kidney Disease Prediction")
     # Load the kidney model
     try:
