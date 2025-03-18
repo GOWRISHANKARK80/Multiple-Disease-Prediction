@@ -7,7 +7,7 @@ import base64
 import os
 
 def set_background_image_local():
-    image_path = "Retailorder image.jpg"
+    image_path = "medical_image.jpg"
     
     if not os.path.exists(image_path):
         st.error("Background image not found. Please check the file path.")
