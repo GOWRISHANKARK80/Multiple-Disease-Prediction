@@ -6,22 +6,34 @@ import pandas as pd
 import base64
 import os
 
+def set_background_image_local():
+    image_path = "1.png"
+    
+    if not os.path.exists(image_path):
+        st.error("Background image not found. Please check the file path.")
+        return
+    
+    with open(image_path, "rb") as file:
+        data = file.read()
+    base64_image = base64.b64encode(data).decode("utf-8")
+    
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{base64_image}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}     
+        </style>
+        """,
+        unsafe_allow_html=True
+    ) 
 
-# Function to set the background dynamically
-def set_bg(image_file):
-    with open(image_file, "rb") as f:
-        encoded = base64.b64encode(f.read()).decode()
-    bg_image = f"""
-    <style>
-    .stApp {{
-        background-image: url("data:image/png;base64,{encoded}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }}
-    </style>
-    """
-    st.markdown(bg_image, unsafe_allow_html=True)
+# Call the function
+set_background_image_local()
 
 
 # Streamlit UI
