@@ -6,6 +6,8 @@ import pandas as pd
 import base64
 import os
 
+
+# Function to set the background dynamically
 def set_bg(image_file):
     with open(image_file, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
@@ -14,22 +16,30 @@ def set_bg(image_file):
     .stApp {{
         background-image: url("data:image/png;base64,{encoded}");
         background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }}
     </style>
     """
     st.markdown(bg_image, unsafe_allow_html=True)
 
-# Call the function
-set_bg("2.jpg")
+
 # Streamlit UI
 st.title("Disease Prediction")
 
 # Sidebar for disease selection
 nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
 
+# Set background based on selection
+if disease == "Kidney Disease":
+    set_bg("1.png")  # Replace with actual file path
+elif disease == "Liver Disease":
+    set_bg("2.jpg")  # Replace with actual file path
+elif disease == "Parkinson's Disease":
+    set_bg("3.jpg")  # Replace with actual file path
 if nav == "Parkinson's Disease":
     st.header("Parkinson's Disease Prediction")
-    set_background_image_local(r"2.jpg")
+    
     # Load the Parkinson's model
     try:
         parkinson_model = pickle.load(open(r'XGBparkinson.pkl', 'rb'))
@@ -79,7 +89,7 @@ if nav == "Parkinson's Disease":
             st.error(f"An error occurred during prediction: {e}")
 
 elif nav == "Kidney Disease":
-    set_background_image_local(r"3.jpg")
+    
     st.header("Kidney Disease Prediction")
     # Load the kidney model
     try:
