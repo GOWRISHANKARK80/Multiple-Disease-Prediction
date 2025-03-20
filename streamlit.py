@@ -10,7 +10,7 @@ st.title("Disease Prediction")
 # Sidebar for disease selection
 nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
 
-
+if nav == "Parkinson's Disease":
     # Load the Parkinson's model
     try:
         parkinson_model = pickle.load(open(r'XGBparkinson.pkl', 'rb'))
