@@ -10,16 +10,7 @@ st.title("Disease Prediction")
 # Sidebar for disease selection
 nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
 
-# Set background based on selection
-if disease == "Kidney Disease":
-    set_bg("1.png")  # Replace with actual file path
-elif disease == "Liver Disease":
-    set_bg("2.jpg")  # Replace with actual file path
-elif disease == "Parkinson's Disease":
-    set_bg("3.jpg")  # Replace with actual file path
-if nav == "Parkinson's Disease":
-    st.header("Parkinson's Disease Prediction")
-    
+
     # Load the Parkinson's model
     try:
         parkinson_model = pickle.load(open(r'XGBparkinson.pkl', 'rb'))
